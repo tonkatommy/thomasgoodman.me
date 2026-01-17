@@ -1,107 +1,27 @@
 {
-    // =============================================================================
-    // TypeScript Configuration for Next.js
-    // =============================================================================
-    // This file configures the TypeScript compiler for our Next.js project.
-    // In JavaScript projects, this file wouldn't exist - TypeScript adds
-    // static type checking that catches errors before runtime.
-    // =============================================================================
-
-    "compilerOptions": {
-        // -------------------------------------------------------------------------
-        // Target & Module Settings
-        // -------------------------------------------------------------------------
-        // "target": Specifies the ECMAScript version to compile to
-        // "lib": Specifies library files to include in compilation
-        "target": "ES2017",
-        "lib": ["dom", "dom.iterable", "esnext"],
-
-        // -------------------------------------------------------------------------
-        // Module Resolution
-        // -------------------------------------------------------------------------
-        // "module": Specifies module code generation
-        // "moduleResolution": Determines how modules are resolved
-        // "bundler" is optimised for modern bundlers like webpack/turbopack
-        "module": "esnext",
-        "moduleResolution": "bundler",
-
-        // -------------------------------------------------------------------------
-        // Type Checking (These have no JS equivalent - TypeScript only!)
-        // -------------------------------------------------------------------------
-        // "strict": Enables all strict type-checking options
-        // "noEmit": Don't emit output (Next.js handles this)
-        "strict": true,
-        "noEmit": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true,
-
-        // -------------------------------------------------------------------------
-        // Interop & Compatibility
-        // -------------------------------------------------------------------------
-        // "allowJs": Allow JavaScript files to be compiled
-        // "skipLibCheck": Skip type checking of declaration files
-        // "esModuleInterop": Enables interoperability between CommonJS and ES Modules
-        "allowJs": true,
-        "skipLibCheck": true,
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "forceConsistentCasingInFileNames": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-
-        // -------------------------------------------------------------------------
-        // JSX Configuration (React specific)
-        // -------------------------------------------------------------------------
-        // "jsx": Specifies JSX code generation
-        // "preserve" keeps JSX for Next.js to handle
-        "jsx": "preserve",
-
-        // -------------------------------------------------------------------------
-        // Path Mapping (Enables clean imports like @/components/Button)
-        // -------------------------------------------------------------------------
-        // In JavaScript, you'd need to configure this in webpack/babel instead
-        "baseUrl": ".",
-        "paths": {
-            "@/*": ["./src/*"],
-            "@/components/*": ["./src/components/*"],
-            "@/lib/*": ["./src/lib/*"],
-            "@/hooks/*": ["./src/hooks/*"],
-            "@/types/*": ["./src/types/*"],
-            "@/styles/*": ["./src/styles/*"]
-        },
-
-        // -------------------------------------------------------------------------
-        // Incremental Compilation
-        // -------------------------------------------------------------------------
-        // Speeds up subsequent compilations by caching previous results
-        "incremental": true,
-
-        // -------------------------------------------------------------------------
-        // Plugins
-        // -------------------------------------------------------------------------
-        // Next.js specific TypeScript plugin for enhanced IDE support
-        "plugins": [
-            {
-                "name": "next"
-            }
-        ]
-    },
-
-    // ---------------------------------------------------------------------------
-    // File Inclusion/Exclusion
-    // ---------------------------------------------------------------------------
-    // Specifies which files TypeScript should process
-    "include": [
-        "next-env.d.ts",
-        "**/*.ts",
-        "**/*.tsx",
-        ".next/types/**/*.ts"
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
     ],
-    "exclude": [
-        "node_modules",
-        ".next",
-        "out",
-        "coverage"
-    ]
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }
