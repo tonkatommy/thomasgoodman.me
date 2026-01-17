@@ -9,7 +9,7 @@
 [![Last Commit](https://img.shields.io/github/last-commit/tonkatommy/thomasgoodman.me?style=for-the-badge&color=blue)](https://github.com/tonkatommy/thomasgoodman.me/commits/main)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/tonkatommy/thomasgoodman.me/ci.yml?style=for-the-badge&label=Build)](https://github.com/tonkatommy/thomasgoodman.me/actions)
 
-*A modern, responsive portfolio website showcasing my journey as a Full-Stack Developer.*
+_A modern, responsive portfolio website showcasing my journey as a Full-Stack Developer._
 
 [View Live Site](https://thomasgoodman.me) · [Report Bug](https://github.com/tonkatommy/thomasgoodman.me/issues) · [Request Feature](https://github.com/tonkatommy/thomasgoodman.me/issues)
 
