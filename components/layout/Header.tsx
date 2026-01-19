@@ -74,7 +74,7 @@ export function Header() {
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 1 }}>
             {navItems.map((item) => (
-              <Button key={item.label} component={Link} href={item.href} color="inherit">
+              <Button key={item.label} LinkComponent={Link} href={item.href} color="inherit">
                 {item.label}
               </Button>
             ))}
