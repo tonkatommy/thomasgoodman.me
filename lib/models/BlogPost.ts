@@ -71,7 +71,6 @@ const BlogPostSchema = new Schema<IBlogPost>(
 )
 
 // Index for faster queries
-BlogPostSchema.index({ slug: 1 })
 BlogPostSchema.index({ published: 1, publishedAt: -1 })
 BlogPostSchema.index({ tags: 1 })
 
