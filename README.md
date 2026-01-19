@@ -1,8 +1,6 @@
-<div align="center">
-
 # 🌐 thomasgoodman.me
 
-### Personal Portfolio & Professional Showcase
+## Personal Portfolio & Professional Showcase
 
 [![Website](https://img.shields.io/badge/Website-thomasgoodman.me-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://thomasgoodman.me)
 [![License](https://img.shields.io/github/license/tonkatommy/thomasgoodman.me?style=for-the-badge)](./LICENSE)
@@ -12,8 +10,6 @@
 _A modern, responsive portfolio website showcasing my journey as a Full-Stack Developer._
 
 [View Live Site](https://thomasgoodman.me) · [Report Bug](https://github.com/tonkatommy/thomasgoodman.me/issues) · [Request Feature](https://github.com/tonkatommy/thomasgoodman.me/issues)
-
-</div>
 
 ---
 
@@ -118,7 +114,7 @@ docker-compose up --build
 
 ## 📁 Project Structure
 
-```
+```text
 thomasgoodman.me/
 ├── src/
 │   ├── components/     # Reusable UI components
@@ -187,21 +183,13 @@ This project is licensed under the **MIT License** — see the [LICENSE](./LICEN
 
 ## 🔗 Connect With Me
 
-<div align="center">
-
 [![Website](https://img.shields.io/badge/Website-thomasgoodman.me-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://thomasgoodman.me)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-tgnz-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/tgnz)
 [![Portfolio](https://img.shields.io/badge/Portfolio-tommytinkers.nz-FF6B6B?style=for-the-badge&logo=safari&logoColor=white)](https://tommytinkers.nz)
 [![Contact](https://img.shields.io/badge/Contact-Get_In_Touch-00C853?style=for-the-badge&logo=minutemailer&logoColor=white)](https://thomasgoodman.me/contact)
 
-</div>
-
 ---
 
-<div align="center">
-
-**Built with ❤️ by Thomas Goodman**
+### Built with ❤️ by Thomas Goodman
 
 ⭐ Star this repo if you find it helpful!
-
-</div>
