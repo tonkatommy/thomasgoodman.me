@@ -48,7 +48,7 @@ export function ProjectFilters({
 
   return (
     <Box sx={{ mb: 4 }}>
-        <TextField
+      <TextField
         fullWidth
         placeholder="Search projects..."
         value={searchQuery}

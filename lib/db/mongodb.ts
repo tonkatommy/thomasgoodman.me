@@ -8,6 +8,8 @@ interface MongooseCache {
 }
 
 declare global {
+  // Using `var` here is required for Node.js global augmentation in TypeScript.
+  // eslint-disable-next-line no-var
   var mongoose: MongooseCache | undefined
 }
 
