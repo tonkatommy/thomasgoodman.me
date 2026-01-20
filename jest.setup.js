@@ -1,1 +1,36 @@
 import '@testing-library/jest-dom'
+
+// Mock Next.js router
+jest.mock('next/navigation', () => ({
+  useRouter() {
+    return {
+      push: jest.fn(),
+      replace: jest.fn(),
+      prefetch: jest.fn(),
+      back: jest.fn(),
+    }
+  },
+  usePathname() {
+    return '/'
+  },
+  useSearchParams() {
+    return new URLSearchParams()
+  },
+}))
+
+// Mock Next.js Image component
+jest.mock('next/image', () => ({
+  __esModule: true,
+  default: function Image(props) {
+    // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
+    return <img {...props} />
+  },
+}))
+
+// Mock Next.js Link component
+jest.mock('next/link', () => {
+  const React = require('react')
+  return React.forwardRef(function Link({ children, href, ...props }, ref) {
+    return React.createElement('a', { href, ref, ...props }, children)
+  })
+})
