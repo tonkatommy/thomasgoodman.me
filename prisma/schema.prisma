@@ -107,3 +107,81 @@ enum OrderStatus {
   DELIVERED
   CANCELLED
 }
+
+model Experience {
+  id          String   @id @default(cuid())
+  title       String
+  company     String
+  location    String?
+  description String   @db.Text
+  startDate   DateTime
+  endDate     DateTime?
+  current     Boolean  @default(false)
+  skills      String[] // Array of skill tags
+  type        String?  // full-time, part-time, contract, internship
+  order       Int      @default(0) // For custom ordering
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Education {
+  id          String   @id @default(cuid())
+  institution String
+  degree      String
+  field       String?
+  location    String?
+  startDate   DateTime
+  endDate     DateTime?
+  current     Boolean  @default(false)
+  description String?  @db.Text
+  gpa         String?  // e.g., "3.8/4.0"
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Certification {
+  id          String   @id @default(cuid())
+  name        String
+  issuer      String
+  issueDate   DateTime
+  expiryDate  DateTime?
+  credentialId String? // License/certificate number
+  credentialUrl String? // Link to verify
+  description String?  @db.Text
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Skill {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  category    String   // e.g., "Frontend", "Backend", "Tools", "Languages"
+  proficiency Int      @default(50) // 0-100
+  icon        String?  // Icon name or URL
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String   @db.Text
+  longDescription String? @db.Text
+  image       String?
+  images      String[] // Array of image URLs
+  technologies String[] // Array of tech stack tags
+  category    String?  // e.g., "Web App", "Mobile", "API"
+  featured    Boolean  @default(false)
+  published   Boolean  @default(false)
+  githubUrl   String?
+  liveUrl     String?
+  startDate   DateTime?
+  endDate     DateTime?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
