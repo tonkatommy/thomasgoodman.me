@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { ProjectsPageClient } from '@/components/projects/ProjectsPageClient'
 import { prisma } from '@/lib/db/prisma'
+import { logWarn } from '@/lib/utils/logger'
 
 export const metadata: Metadata = {
   title: 'Projects - Thomas Goodman',
@@ -29,7 +30,7 @@ async function getProjects() {
     return { projects, categories, technologies }
   } catch (error) {
     // Return empty arrays if database is not available (e.g., during build)
-    console.warn('Database not available, returning empty projects:', error)
+    logWarn('Database not available, returning empty projects', error)
     return { projects: [], categories: [], technologies: [] }
   }
 }

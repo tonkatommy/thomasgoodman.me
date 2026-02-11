@@ -8,8 +8,7 @@ interface MongooseCache {
 }
 
 declare global {
-  // Using `var` here is required for Node.js global augmentation in TypeScript.
-  // eslint-disable-next-line no-var
+  // Using `var` is required for Node.js global augmentation in TypeScript.
   var mongoose: MongooseCache | undefined
 }
 
@@ -48,4 +47,5 @@ async function connectDB(): Promise<typeof mongoose> {
   return cached.conn
 }
 
+export { connectDB }
 export default connectDB

@@ -2,6 +2,7 @@
 const isDev = process.env.NODE_ENV === 'development';
 
 const nextConfig = {
+  output: 'standalone',
   reactStrictMode: true,
   images: {
     remotePatterns: [
@@ -16,7 +17,11 @@ const nextConfig = {
         : []),
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: 'raw.githubusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
       },
     ],
   },

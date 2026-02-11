@@ -2,12 +2,17 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { ProjectDetail } from '@/components/projects/ProjectDetail'
 import { prisma } from '@/lib/db/prisma'
+import { logWarn } from '@/lib/utils/logger'
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>
 }
 
+const SLUG_PATTERN = /^[a-z0-9]([a-z0-9-]*[a-z0-9])?$/
+
 async function getProject(slug: string) {
+  if (!SLUG_PATTERN.test(slug)) return null
+
   try {
     const project = await prisma.project.findUnique({
       where: { slug },
@@ -20,7 +25,7 @@ async function getProject(slug: string) {
     return project
   } catch (error) {
     // Return null if database is not available
-    console.warn('Database not available:', error)
+    logWarn('Database not available for project', error)
     return null
   }
 }

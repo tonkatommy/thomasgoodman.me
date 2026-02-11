@@ -2,17 +2,22 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { BlogPostDetail } from '@/components/blog/BlogPostDetail'
 import { getPublishedBlogPostBySlug } from '@/lib/blog/posts'
+import { logWarn } from '@/lib/utils/logger'
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
 }
 
+const SLUG_PATTERN = /^[a-z0-9]([a-z0-9-]*[a-z0-9])?$/
+
 async function getPost(slug: string) {
+  if (!SLUG_PATTERN.test(slug)) return null
+
   try {
     return await getPublishedBlogPostBySlug(slug)
   } catch (error) {
     // Return null if database is not available
-    console.warn('Database not available:', error)
+    logWarn('Database not available for blog post', error)
     return null
   }
 }

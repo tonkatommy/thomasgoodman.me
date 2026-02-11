@@ -70,7 +70,7 @@ A personal branding and portfolio website built to showcase my professional expe
 
 Ensure you have the following installed:
 
-- **Node.js** (v18.x or higher)
+- **Node.js** (v20.x or higher)
 - **npm** or **yarn**
 - **Docker** (optional, for containerised development)
 
@@ -107,7 +107,7 @@ Ensure you have the following installed:
 ### Docker Development
 
 ```powershell
-docker-compose up --build
+docker compose -f docker-compose.dev.yml up --build
 ```
 
 ---
@@ -116,18 +116,25 @@ docker-compose up --build
 
 ```text
 thomasgoodman.me/
-├── src/
-│   ├── components/     # Reusable UI components
-│   ├── pages/          # Next.js pages
-│   ├── styles/         # Global styles and themes
-│   ├── lib/            # Utility functions and helpers
-│   ├── hooks/          # Custom React hooks
-│   └── types/          # TypeScript type definitions
-├── public/             # Static assets
-├── tests/              # Unit and integration tests
-├── .github/            # GitHub Actions workflows
-├── docker/             # Docker configuration
-└── docs/               # Documentation
+├── app/                # Next.js App Router pages and API routes
+│   ├── api/            # API endpoints (auth, health)
+│   ├── blog/           # Blog listing and detail pages
+│   ├── projects/       # Project showcase pages
+│   ├── resume/         # Resume page
+│   └── layout.tsx      # Root layout with providers
+├── components/         # Reusable UI components
+│   ├── blog/           # Blog-specific components
+│   ├── layout/         # Header, Footer, MainLayout
+│   ├── projects/       # Project grid, filters, detail
+│   ├── providers/      # Auth and Theme providers
+│   └── resume/         # Resume section components
+├── lib/                # Utilities, DB clients, auth config
+├── types/              # TypeScript type definitions
+├── prisma/             # Prisma schema and migrations
+├── public/             # Static assets (favicon)
+├── __tests__/          # Jest test files
+├── .github/            # GitHub Actions CI workflow
+└── docker/             # Dockerfile for production
 ```
 
 ---
@@ -150,16 +157,18 @@ npm run test:coverage
 
 ## 📈 Roadmap
 
-- [x] Initial project setup
-- [x] Repository configuration
-- [ ] Core layout and navigation
-- [ ] Resume/CV section
-- [ ] Project showcase
-- [ ] Blog platform
+- [x] Initial project setup and repository configuration
+- [x] Core layout and navigation (Header, Footer, Theme)
+- [x] Resume/CV section (Skills, Experience, Education, Certifications)
+- [x] Project showcase with filtering
+- [x] Blog platform with categories and tags
+- [x] SEO (sitemap, robots.txt, JSON-LD, Open Graph)
+- [x] CI/CD pipeline (GitHub Actions)
+- [x] Security headers and middleware
+- [x] Docker production setup
 - [ ] Contact form integration
-- [ ] SEO optimisation
-- [ ] Performance auditing
-- [ ] CI/CD pipeline
+- [ ] Analytics integration
+- [ ] E2E testing
 
 ---
 

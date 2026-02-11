@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { prisma } from '@/lib/db/prisma'
 import { getPublishedBlogPosts } from '@/lib/blog/posts'
 import { getNextAuthUrl } from '@/lib/utils/env'
+import { logWarn } from '@/lib/utils/logger'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getNextAuthUrl().replace(/\/$/, '')
@@ -28,7 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   } catch (error) {
     // Database may not be available during build; keep sitemap best-effort.
-    console.warn('Database not available for project sitemap entries:', error)
+    logWarn('Database not available for project sitemap entries', error)
   }
 
   try {
@@ -41,7 +42,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   } catch (error) {
     // MongoDB may not be available during build; keep sitemap best-effort.
-    console.warn('Database not available for blog sitemap entries:', error)
+    logWarn('Database not available for blog sitemap entries', error)
   }
 
   return entries
