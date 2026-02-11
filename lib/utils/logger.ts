@@ -11,11 +11,3 @@ export function logWarn(message: string, error?: unknown): void {
     console.warn(message, error)
   }
 }
-
-export function logError(message: string, error?: unknown): void {
-  if (isProduction) {
-    console.error(message)
-  } else {
-    console.error(message, error)
-  }
-}

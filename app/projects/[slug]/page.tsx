@@ -8,7 +8,7 @@ interface ProjectPageProps {
   params: Promise<{ slug: string }>
 }
 
-const SLUG_PATTERN = /^[a-z0-9][a-z0-9-]*[a-z0-9]$/
+const SLUG_PATTERN = /^[a-z0-9]([a-z0-9-]*[a-z0-9])?$/
 
 async function getProject(slug: string) {
   if (!SLUG_PATTERN.test(slug)) return null
