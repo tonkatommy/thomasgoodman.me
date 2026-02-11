@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { BlogPageClient } from '@/components/blog/BlogPageClient'
 import { getPublishedBlogPosts } from '@/lib/blog/posts'
+import { logWarn } from '@/lib/utils/logger'
 
 export const metadata: Metadata = {
   title: 'Blog - Thomas Goodman',
@@ -17,7 +18,7 @@ async function getBlogData() {
     return { posts, categories, tags }
   } catch (error) {
     // Return empty arrays if database is not available (e.g., during build)
-    console.warn('Database not available, returning empty blog posts:', error)
+    logWarn('Database not available, returning empty blog posts', error)
     return { posts: [], categories: [], tags: [] }
   }
 }

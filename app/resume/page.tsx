@@ -5,6 +5,7 @@ import { CertificationsSection } from '@/components/resume/CertificationsSection
 import { SkillsGrid } from '@/components/resume/SkillsGrid'
 import { Box, Typography, Paper, Divider } from '@mui/material'
 import { prisma } from '@/lib/db/prisma'
+import { logWarn } from '@/lib/utils/logger'
 
 export const metadata: Metadata = {
   title: 'Resume - Thomas Goodman',
@@ -46,7 +47,7 @@ async function getResumeData() {
     return { experiences, education, certifications, skills }
   } catch (error) {
     // Return empty arrays if database is not available (e.g., during build)
-    console.warn('Database not available, returning empty resume data:', error)
+    logWarn('Database not available, returning empty resume data', error)
     return { experiences: [], education: [], certifications: [], skills: [] }
   }
 }
