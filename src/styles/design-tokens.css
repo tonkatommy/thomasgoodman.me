@@ -55,11 +55,7 @@
   /* ── Typography ──────────────────────────────────── */
   --font-heading: 'Exo 2', system-ui, sans-serif;
   --font-body:    'Open Sans', system-ui, sans-serif;
-  /* Agave Nerd Font is the primary mono face — used for the logo mark,
-     section tags, taglines, and code. Self-host via @font-face in globals.css.
-     Download: github.com/ryanoasis/nerd-fonts/releases (AgaveNerdFont-*.ttf) */
-  --font-mono:    'Agave Nerd Font', 'AgaveNerdFont', 'Agave NF',
-                  'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  --font-mono:    'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
 
   /* ── Type scale ──────────────────────────────────── */
   --text-xs:    0.75rem;     /* 12px */
