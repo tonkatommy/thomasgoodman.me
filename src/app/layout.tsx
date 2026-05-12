@@ -55,6 +55,9 @@ export const metadata: Metadata = {
     description:
       'Avionics technician turned full-stack developer. Based in Auckland, NZ.',
   },
+  icons: {
+    icon: '/favicon.svg',
+  },
   robots: {
     index: true,
     follow: true,
