@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thomas Goodman — Full-Stack Developer</title>
+    <meta
+      name="description"
+      content="Thomas 'Tommy' Goodman — Full-stack developer based in Helensville, Auckland, NZ. Former RNZAF Avionics Technician turned software developer."
+    />
+
+    <!-- Fonts: Exo 2 (headings) + Jura (body) + Agave Nerd Font (mono) — all local -->
+    <style>
+      @font-face {
+        font-family: "Exo 2";
+        src: url("./fonts/Exo2-VariableFont_wght.ttf") format("truetype");
+        font-weight: 100 900;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Exo 2";
+        src: url("./fonts/Exo2-Italic-VariableFont_wght.ttf") format("truetype");
+        font-weight: 100 900;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Jura";
+        src: url("./fonts/Jura-VariableFont_wght.ttf") format("truetype");
+        font-weight: 300 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Agave";
+        src: url("./fonts/AgaveNerdFont-Regular.ttf") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Agave";
+        src: url("./fonts/AgaveNerdFont-Bold.ttf") format("truetype");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+
+    <!-- Design tokens -->
+    <style>
+      /* ── Dark mode (default) ─────────────────────────────── */
+      :root {
+        color-scheme: dark;
+        --color-bg-base: #0b1210;
+        --color-bg-surface: #111a16;
+        --color-bg-raised: #172219;
+        --color-bg-overlay: rgba(11, 18, 16, 0.85);
+        --color-border-subtle: #1f2e27;
+        --color-border-default: #2a3d33;
+        --color-border-strong: #3d5c4a;
+        --color-accent: #52b788;
+        --color-accent-hover: #6fcfa0;
+        --color-accent-muted: #2d6a4f;
+        --color-accent-subtle: #142b1f;
+        --color-text-primary: #dce8e2;
+        --color-text-secondary: #8aab98;
+        --color-text-muted: #566e61;
+        --color-text-inverse: #0b1210;
+        --color-mono: #7dd3b0;
+        --color-error: #e57373;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+        --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(82, 183, 136, 0.06);
+        --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(82, 183, 136, 0.08);
+        --shadow-glow: 0 0 20px rgba(82, 183, 136, 0.18);
+        --font-heading: "Exo 2", system-ui, sans-serif;
+        --font-body: "Jura", system-ui, sans-serif;
+        --font-mono: "Agave", "JetBrains Mono", "Fira Code", monospace;
+        --text-xs: 0.75rem;
+        --text-sm: 0.875rem;
+        --text-base: 1rem;
+        --text-lg: 1.125rem;
+        --text-xl: 1.25rem;
+        --text-2xl: 1.5rem;
+        --text-3xl: 1.875rem;
+        --text-4xl: 2.25rem;
+        --text-5xl: 3rem;
+        --text-6xl: 3.75rem;
+        --text-7xl: 4.5rem;
+        --leading-tight: 1.15;
+        --leading-snug: 1.35;
+        --leading-normal: 1.5;
+        --leading-relaxed: 1.65;
+        --tracking-tight: -0.02em;
+        --tracking-normal: 0em;
+        --tracking-wide: 0.05em;
+        --tracking-wider: 0.1em;
+        --space-1: 0.25rem;
+        --space-2: 0.5rem;
+        --space-3: 0.75rem;
+        --space-4: 1rem;
+        --space-5: 1.25rem;
+        --space-6: 1.5rem;
+        --space-7: 1.75rem;
+        --space-8: 2rem;
+        --space-10: 2.5rem;
+        --space-12: 3rem;
+        --space-16: 4rem;
+        --space-20: 5rem;
+        --space-24: 6rem;
+        --space-32: 8rem;
+        --radius-sm: 4px;
+        --radius-md: 6px;
+        --radius-lg: 10px;
+        --radius-xl: 16px;
+        --radius-2xl: 24px;
+        --radius-full: 9999px;
+        --motion-fast: 150ms ease;
+        --motion-base: 250ms ease;
+        --motion-slow: 400ms ease;
+        --motion-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+        --z-nav: 100;
+        --container-max: 1024px;
+        --section-py: var(--space-24);
+        --nav-height: 64px;
+      }
+
+      /* ── Light mode overrides ──────────────────────────────── */
+      [data-theme="light"] {
+        color-scheme: light;
+        --color-bg-base: #f4f9f6;
+        --color-bg-surface: #ffffff;
+        --color-bg-raised: #e8f3ed;
+        --color-bg-overlay: rgba(244, 249, 246, 0.9);
+        --color-border-subtle: #d4e8db;
+        --color-border-default: #a8cbb7;
+        --color-border-strong: #6fa88a;
+        --color-accent: #2d6a4f;
+        --color-accent-hover: #245a42;
+        --color-accent-muted: #52b788;
+        --color-accent-subtle: #e8f5ee;
+        --color-text-primary: #0d1f18;
+        --color-text-secondary: #3a5e4e;
+        --color-text-muted: #6b9a84;
+        --color-text-inverse: #ffffff;
+        --color-mono: #2d6a4f;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+        --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+        --shadow-glow: 0 0 20px rgba(45, 106, 79, 0.15);
+      }
+
+      /* ── Base reset ─────────────────────────────────────────── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      html,
+      body {
+        min-height: 100%;
+      }
+      body {
+        font-family: var(--font-body);
+        font-size: var(--text-base);
+        line-height: var(--leading-relaxed);
+        color: var(--color-text-primary);
+        background-color: var(--color-bg-base);
+        transition:
+          background-color var(--motion-slow),
+          color var(--motion-slow);
+      }
+      a {
+        color: var(--color-accent);
+        text-decoration: none;
+        transition: color var(--motion-base);
+      }
+      a:hover {
+        color: var(--color-accent-hover);
+      }
+      button {
+        font-family: inherit;
+      }
+      img,
+      svg {
+        display: block;
+      }
+      #root {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ── Bowed (inset, not full-width) main layout ───────────── */
+      .bowed-main {
+        max-width: 1180px;
+        margin: 0 auto;
+        position: relative;
+      }
+      .bowed-main > section {
+        margin-left: clamp(16px, 3vw, 48px);
+        margin-right: clamp(16px, 3vw, 48px);
+        border-left: 1px solid var(--color-border-subtle);
+        border-right: 1px solid var(--color-border-subtle);
+      }
+      .bowed-main > section:first-child {
+        margin-top: 0;
+      }
+      @media (max-width: 720px) {
+        .bowed-main > section {
+          margin-left: 0;
+          margin-right: 0;
+          border-left: none;
+          border-right: none;
+        }
+      }
+
+      /* ── Animations ─────────────────────────────────────────── */
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade-up {
+        animation: fadeUp 0.5s ease forwards;
+      }
+      .fade-up-1 {
+        animation-delay: 100ms;
+        opacity: 0;
+      }
+      .fade-up-2 {
+        animation-delay: 220ms;
+        opacity: 0;
+      }
+      .fade-up-3 {
+        animation-delay: 340ms;
+        opacity: 0;
+      }
+      .fade-up-4 {
+        animation-delay: 460ms;
+        opacity: 0;
+      }
+
+      /* ── Responsive nav ─────────────────────────────────────── */
+      @media (max-width: 680px) {
+        .nav-desktop {
+          display: none !important;
+        }
+        .nav-mobile-toggle {
+          display: flex !important;
+        }
+      }
+
+      /* ── About grid responsive ──────────────────────────────── */
+      @media (max-width: 860px) {
+        .about-grid {
+          grid-template-columns: 1fr !important;
+        }
+      }
+
+      /* ── Reduced motion ─────────────────────────────────────── */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+
+    <!-- React + Babel -->
+    <script
+      src="https://unpkg.com/react@18.3.1/umd/react.development.js"
+      integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"
+      integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"
+      integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Component files -->
+    <!-- <script type="text/babel" src="tweaks-panel.jsx"></script> -->
+    <script type="text/babel" src="SectionLabel.jsx"></script>
+    <script type="text/babel" src="Nav.jsx"></script>
+    <script type="text/babel" src="Hero.jsx"></script>
+    <script type="text/babel" src="About.jsx"></script>
+    <script type="text/babel" src="Experience.jsx"></script>
+    <script type="text/babel" src="Projects.jsx"></script>
+    <script type="text/babel" src="TechStack.jsx"></script>
+    <script type="text/babel" src="Education.jsx"></script>
+    <script type="text/babel" src="WhyMe.jsx"></script>
+    <script type="text/babel" src="Hobbies.jsx"></script>
+    <script type="text/babel" src="Contact.jsx"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- Interactive dot-grid background -->
+    <canvas
+      id="dot-bg"
+      aria-hidden="true"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+      "
+    ></canvas>
+
+    <script>
+      (function () {
+        const canvas = document.getElementById("dot-bg");
+        const ctx = canvas.getContext("2d");
+
+        // Config
+        const SPACING = 28; // grid spacing (px)
+        const BASE_R = 1.4; // dot radius at rest
+        const REPEL_R = 120; // cursor influence radius
+        const MAX_SHIFT = 22; // max displacement (px)
+        const BASE_ALPHA = 0.18; // base dot opacity
+        const BRIGHT_ADD = 0.55; // extra alpha at cursor edge
+        const SPRING = 0.12; // spring return speed
+        const FRICTION = 0.72; // velocity damping
+
+        let W, H, cols, rows, dots;
+        let mx = -9999,
+          my = -9999; // mouse position
+
+        // Detect dark vs light for dot colour
+        function dotColor() {
+          return document.documentElement.getAttribute("data-theme") === "light"
+            ? "45,106,79" // #2d6a4f
+            : "82,183,136"; // #52b788
+        }
+
+        function buildGrid() {
+          W = canvas.width = window.innerWidth;
+          H = canvas.height = window.innerHeight;
+          cols = Math.ceil(W / SPACING) + 1;
+          rows = Math.ceil(H / SPACING) + 1;
+          dots = [];
+          for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+              dots.push({
+                ox: c * SPACING, // origin x
+                oy: r * SPACING, // origin y
+                x: c * SPACING, // current x
+                y: r * SPACING, // current y
+                vx: 0,
+                vy: 0,
+              });
+            }
+          }
+        }
+
+        function tick() {
+          ctx.clearRect(0, 0, W, H);
+          const color = dotColor();
+
+          for (let i = 0; i < dots.length; i++) {
+            const d = dots[i];
+
+            // Distance from cursor to dot origin
+            const dx = d.ox - mx;
+            const dy = d.oy - my;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            // Repulsion force
+            if (dist < REPEL_R && dist > 0) {
+              const strength = 1 - dist / REPEL_R;
+              const force = strength * MAX_SHIFT;
+              d.vx += (dx / dist) * force * 0.15;
+              d.vy += (dy / dist) * force * 0.15;
+            }
+
+            // Spring back to origin
+            d.vx += (d.ox - d.x) * SPRING;
+            d.vy += (d.oy - d.y) * SPRING;
+
+            // Dampen
+            d.vx *= FRICTION;
+            d.vy *= FRICTION;
+
+            d.x += d.vx;
+            d.y += d.vy;
+
+            // Alpha: brighter near cursor
+            const curDist = Math.sqrt((d.x - mx) ** 2 + (d.y - my) ** 2);
+            const proximity = Math.max(0, 1 - curDist / REPEL_R);
+            const alpha = BASE_ALPHA + proximity * BRIGHT_ADD;
+
+            // Slightly larger dot when displaced
+            const displacement = Math.sqrt((d.x - d.ox) ** 2 + (d.y - d.oy) ** 2);
+            const r = BASE_R + displacement * 0.04;
+
+            ctx.beginPath();
+            ctx.arc(d.x, d.y, r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${color},${alpha.toFixed(3)})`;
+            ctx.fill();
+          }
+
+          requestAnimationFrame(tick);
+        }
+
+        // Mouse tracking
+        window.addEventListener("mousemove", (e) => {
+          mx = e.clientX;
+          my = e.clientY;
+        });
+        window.addEventListener("mouseleave", () => {
+          mx = -9999;
+          my = -9999;
+        });
+
+        // Touch support
+        window.addEventListener(
+          "touchmove",
+          (e) => {
+            if (e.touches.length > 0) {
+              mx = e.touches[0].clientX;
+              my = e.touches[0].clientY;
+            }
+          },
+          { passive: true },
+        );
+        window.addEventListener("touchend", () => {
+          mx = -9999;
+          my = -9999;
+        });
+
+        // Resize
+        window.addEventListener("resize", buildGrid);
+
+        // Theme change observer
+        const observer = new MutationObserver(() => {});
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ["data-theme"],
+        });
+
+        buildGrid();
+        tick();
+      })();
+    </script>
+
+    <script type="text/babel">
+      // ── Active section tracker ────────────────────────────────
+      const useActiveSection = (sectionIds) => {
+        const [active, setActive] = React.useState("");
+
+        React.useEffect(() => {
+          const observers = [];
+          const threshold = 0.35;
+
+          sectionIds.forEach((id) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const obs = new IntersectionObserver(
+              ([entry]) => {
+                if (entry.isIntersecting) setActive(id);
+              },
+              { threshold, rootMargin: "-64px 0px 0px 0px" },
+            );
+            obs.observe(el);
+            observers.push(obs);
+          });
+
+          return () => observers.forEach((o) => o.disconnect());
+        }, []);
+
+        return active;
+      };
+
+      // ── App ──────────────────────────────────────────────────
+      const App = () => {
+        const [theme, setTheme] = React.useState(() => {
+          try {
+            return localStorage.getItem("tg-theme") || "dark";
+          } catch {
+            return "dark";
+          }
+        });
+
+        React.useEffect(() => {
+          document.documentElement.setAttribute("data-theme", theme);
+          try {
+            localStorage.setItem("tg-theme", theme);
+          } catch {}
+        }, [theme]);
+
+        const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
+
+        const sectionIds = [
+          "about",
+          "experience",
+          "projects",
+          "stack",
+          "education",
+          "why-me",
+          "hobbies",
+          "contact",
+        ];
+        const activeSection = useActiveSection(sectionIds);
+
+        return (
+          <>
+            <Nav theme={theme} onToggleTheme={toggleTheme} activeSection={activeSection} />
+            <main className="bowed-main">
+              <Hero />
+              <About />
+              <Experience />
+              <Projects />
+              <TechStack />
+              <Education />
+              <WhyMe />
+              <Hobbies />
+              <Contact />
+            </main>
+          </>
+        );
+      };
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>
