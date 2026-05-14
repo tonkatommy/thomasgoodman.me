@@ -22,12 +22,12 @@ const About = () => (
 
         {[
           "Hi, I'm Tommy Goodman, a full-stack developer based in Auckland, New Zealand.",
-          "Before moving into software, I spent 15 years as an Avionics Technician with the Royal New Zealand Air Force, maintaining safety-critical aircraft systems. That background gave me a real discipline for precision, documentation, and working in high-stakes environments.",
-          "I'm now looking for junior to intermediate full-stack developer roles, ideally remote or hybrid, where I can keep building on the solid foundation I've developed over the past couple of years.",
+          "Before moving into software, I spent 15 years as an Avionics Technician with the Royal New Zealand Air Force, maintaining safety-critical aircraft systems. That background gave me a deep discipline for precision, documentation, and working in high-stakes environments.",
+          "I'm looking for junior to intermediate full-stack developer roles, ideally remote or hybrid, where I can apply and deepen the skills I've developed over the past couple of years.",
           "At Mission Ready HQ I built full-stack applications using Node, Express, React, and MySQL, set up Docker environments and CI/CD pipelines with GitHub Actions, and worked in an Agile team.",
           "I also completed a mentored internship at PolicyCheck, where I integrated a third-party email platform as a Docker service into a live Next.js application.",
           "During my Air Force career, I built two internal web applications from scratch, including a key press management system that replaced a fully manual paper process and cut tracking time by around 80%.",
-          "What I bring that most junior devs don't is real-world discipline - 15 years of working to strict standards where mistakes had consequences. I'm methodical, I don't cut corners on documentation, and I know how to stay calm and work through problems systematically. I pick things up quickly, and I genuinely care about doing the work properly.",
+          "What I bring that most junior devs don't is real-world discipline: 15 years of working to strict standards where mistakes had consequences. I'm methodical, I don't cut corners on documentation, and I know how to stay calm and work through problems systematically. I pick things up quickly, and I genuinely care about doing the work properly.",
           "I'm looking for a team that values reliability and growth, somewhere I can contribute from day one while continuing to develop.",
         ].map((para, i) => (
           <p key={i} style={{
