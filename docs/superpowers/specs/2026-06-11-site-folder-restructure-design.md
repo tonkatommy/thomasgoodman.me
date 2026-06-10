@@ -29,7 +29,6 @@ thomasgoodman.me/
 │       ├── favicon.svg
 │       └── resume/resume.pdf
 ├── README.md
-├── package.json / package-lock.json
 └── .gitignore
 ```
 
