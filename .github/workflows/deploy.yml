@@ -2,13 +2,26 @@ name: Deploy site
 on:
     push:
         branches: [main]
+        paths:
+            - site/**
+            - .github/workflows/deploy.yml
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: production-deploy
+    cancel-in-progress: false
 
 jobs:
     deploy:
         name: Deploy static site via FTP
         runs-on: ubuntu-latest
+        timeout-minutes: 15
         environment:
             name: production
+            url: https://thomasgoodman.me
 
         steps:
             - name: Check out repository
@@ -20,9 +33,6 @@ jobs:
                   server: ${{ secrets.FTP_SERVER }}
                   username: ${{ secrets.FTP_USERNAME }}
                   password: ${{ secrets.FTP_PASSWORD }}
-                  protocol: ftp
+                  protocol: ftps
                   local-dir: ./site/
                   server-dir: ./
-                  # One-time wipe of stale root-level files from the old layout.
-                  # Remove after the first successful deploy from site/.
-                  dangerous-clean-slate: true
