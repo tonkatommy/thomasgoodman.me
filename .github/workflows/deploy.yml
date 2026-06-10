@@ -14,12 +14,6 @@ jobs:
             - name: Check out repository
               uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
 
-            # - name: Prepare deployment files
-            #   run: |
-            #       mkdir deploy
-            #       cp index.html deploy/
-            #       cp -R assets deploy/
-
             - name: Upload to Hostinger
               uses: SamKirkland/FTP-Deploy-Action@110f9186c050f71550953127052e77650219c287 # v4.4.0
               with:
@@ -27,5 +21,5 @@ jobs:
                   username: ${{ secrets.FTP_USERNAME }}
                   password: ${{ secrets.FTP_PASSWORD }}
                   protocol: ftp
-                  local-dir: ./
+                  local-dir: ./site/
                   server-dir: ./
