@@ -6,6 +6,11 @@ on:
             - site/**
             - .github/workflows/deploy.yml
     workflow_dispatch:
+        inputs:
+            clean_slate:
+                description: "Delete all files on the server before upload"
+                type: boolean
+                default: false
 
 permissions:
     contents: read
@@ -36,3 +41,4 @@ jobs:
                   protocol: ftps
                   local-dir: ./site/
                   server-dir: ./
+                  dangerous-clean-slate: ${{ inputs.clean_slate }}
